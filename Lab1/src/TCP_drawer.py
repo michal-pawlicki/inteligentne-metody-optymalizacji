@@ -4,8 +4,6 @@ def read_solution(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
 
-    print(lines[0].strip().split()[2:] )
-
     pathA = [tuple(map(int, point.strip('()').split(','))) for point in lines[0].strip().split()[2:] if point.strip('()')]
     pathB = [tuple(map(int, point.strip('()').split(','))) for point in lines[1].strip().split()[2:] if point.strip('()')]
 
