@@ -3,6 +3,8 @@
 TSPSolution nearestNeighbour(const TSPData& data) {
   TSPSolution solution;
   std::vector<bool> visited(data.coordinates.size(), false);
+
+  srand(time(0));
   
   int startNodeA = rand() % data.coordinates.size(); 
   solution.pathA.push_back(startNodeA);
@@ -34,6 +36,9 @@ TSPSolution nearestNeighbour(const TSPData& data) {
     visited[partialSolutionB.second] = true;
     solution.pathB.insert(solution.pathB.begin() + partialSolutionB.first, partialSolutionB.second);    
   }
+
+  solution.pathA.insert(solution.pathA.end(), solution.pathA[0]);
+  solution.pathB.insert(solution.pathB.end(), solution.pathB[0]);
 
   return solution;
 }

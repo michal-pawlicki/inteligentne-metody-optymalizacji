@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <ctime>
 #include "defs.hpp"
 
 TSPSolution nearestNeighbour(const TSPData& data);

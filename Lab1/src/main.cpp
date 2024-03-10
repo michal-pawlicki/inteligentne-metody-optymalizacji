@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "reader.hpp"
 #include "nearest_neighbour.hpp"
 
@@ -9,18 +10,21 @@ int main() {
 
     TSPSolution solution = nearestNeighbour(data);
 
-    std::cout << "Path A: ";
+    std::ofstream outFile("solution_nearest_neighbour.txt");
+
+    outFile << "Path A: ";
     for (int i = 0; i < solution.pathA.size(); i++) {
-        std::cout << solution.pathA[i] << " ";
+        outFile << "(" << data.coordinates[solution.pathA[i]].x << "," << data.coordinates[solution.pathA[i]].y << ") ";
     }
-    std::cout << std::endl;
+    outFile << std::endl;
 
-    std::cout << "Path B: ";
+    outFile << "Path B: ";
     for (int i = 0; i < solution.pathB.size(); i++) {
-        std::cout << solution.pathB[i] << " ";
+        outFile << "(" << data.coordinates[solution.pathB[i]].x << "," << data.coordinates[solution.pathB[i]].y << ") ";
     }
-    std::cout << std::endl;
+    outFile << std::endl;
 
+    outFile.close();
 
     return 0;
 }
