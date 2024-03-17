@@ -17,4 +17,5 @@ struct TSPData {
 struct TSPSolution {
   std::vector<int> pathA;
   std::vector<int> pathB;
+  int distance;
 };
