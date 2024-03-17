@@ -10,6 +10,44 @@ W zadaniu zaimplementowano trzy algorytmy: Nearest Neighbour, Cycle Augmentation
 
 ## Opis algorytmów
 
+### Nearest Neighbour
+
+Dla każdej ścieżki:
+Dodaj wierzchołek startowy dla ścieżki
+
+Powtarzaj dopóki nie dodano wszystkich wierzchołków na przemian dla każdej ścieżki:
+Dla każdego miejsca do wstawienia:
+Dla każdego nieodwiedzonego wierzchołka:
+Utwórz kopię ścieżki z wierzchołkiem wstawionym w aktualne miejsce
+Jeśli utworzona ścieżka jest krótsza od dotychczasowej najkrótszej:
+Zapisz indeks wierzchołka i miejsce wstawienia
+Wstaw wierzchołek w odpowiednie miejsce w ścieżce
+
+### Cycle Augmentation
+
+Dla każdej ścieżki:
+Dodaj wierzchołek startowy dla ścieżki
+
+Powtarzaj dopóki nie dodano wszystkich wierzchołków na przemian dla każdej ścieżki:
+Dla każdego miejsca do wstawienia:
+Dla każdego nieodwiedzonego wierzchołka:
+Utwórz kopię ścieżki z wierzchołkiem wstawionym w aktualne miejsce
+Jeśli utworzony na podstawie ścieżki cykl jest krótszy od dotychczasowego najkrótszego:
+Zapisz indeks wierzchołka i miejsce wstawienia
+Wstaw wierzchołek w odpowiednie miejsce w ścieżce
+
+### Two Regret
+
+Dla każdej ścieżki:
+Dodaj wierzchołek startowy dla ścieżki
+Powtarzaj dopóki nie dodano wszystkich wierzchołków na przemian dla każdej ścieżki:
+Dla każdego nieodwiedzonego wierzchołka:
+Dla każdego miejsca do wstawienia:
+Znajdź dwa najlepsze miejsca do wstawienia
+Oblicz 2-żal
+Znajdź wierzchołek, dla którego żal jest największy
+Wstaw wierzchołek w odpowiednie miejsce w ścieżce
+
 ## Wynik eksperymentów
 
 | Algorytm           | kroA                  | kroB                  |
