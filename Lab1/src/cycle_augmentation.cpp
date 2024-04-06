@@ -67,10 +67,10 @@ std::pair<int, int> findBestCycle(const TSPData& data, const std::vector<bool>& 
 
 int calculateDistanceCycle(const TSPData& data, const std::vector<int>& path) {
   int distance = 0;
-  for (int i = 0; i < path.size() - 1; i++) {
-    distance += data.distances[path[i]][path[i + 1]];
+  for (int i = 0; i < path.size(); i++) {
+    distance += data.distances[path[i]-1][path[i + 1]-1];
   }
-  distance += data.distances[path.back()][path[0]];
+  distance += data.distances[path.back()][path[0]-1];
   return distance;
 }
 
