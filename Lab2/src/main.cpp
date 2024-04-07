@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
 #include "reader.hpp"
 #include "steepest.hpp"
 #include "random_walk.hpp"
@@ -28,6 +29,7 @@ int main(int argc, char* argv[]) {
 
     std::string filename = "../data/lab1/" + dataSet + "100";
 
+    
     TSPData data = readTSPData(filename);
 
     TSPSolution solution = readTSPSolution("../data/lab2/" + dataSet + "/" + startingAlgorithm + "/solution_" + std::to_string(startingNode) + ".txt");
@@ -35,6 +37,11 @@ int main(int argc, char* argv[]) {
     solution.distance = calculateDistanceCycle(data, solution.pathA) + calculateDistanceCycle(data, solution.pathB);
 
     TSPSolution newSolution;
+
+
+
+    auto start = std::chrono::high_resolution_clock::now();
+
 
     if (typeOfLocalSearch == "steepest") {
         if (typeOfNeighbourhood == "vertices") {
@@ -44,9 +51,9 @@ int main(int argc, char* argv[]) {
         }
     } else if (typeOfLocalSearch == "random_walk") {
         if (typeOfNeighbourhood == "vertices") {
-            newSolution = randomWalkVertices(data, solution, 10);
+            newSolution = randomWalkVertices(data, solution, 1);
         } else {
-            newSolution = randomWalkEdges(data, solution, 10);
+            newSolution = randomWalkEdges(data, solution, 1);
         }
     } else if (typeOfLocalSearch == "greedy") {
         if (typeOfNeighbourhood == "vertices") {
@@ -55,6 +62,8 @@ int main(int argc, char* argv[]) {
             newSolution = greedyEdges(data, solution);
         }
     }
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
     std::ofstream file;
     file.open(nameOfOutputFile);
@@ -67,6 +76,7 @@ int main(int argc, char* argv[]) {
         file << newSolution.pathB[i] << " ";
     }
     file << std::endl;
+    file << duration << std::endl;
 
 
 
