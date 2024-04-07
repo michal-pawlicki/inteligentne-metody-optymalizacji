@@ -16,3 +16,5 @@ TSPSolution doOutsideMove(const TSPSolution& solution, int i, int j);
 TSPSolution doInsideMoveVertices(const TSPSolution& solution, int i, int j, int pathIndex);
 
 TSPSolution doInsideMoveEdges(const TSPSolution& solution, int i, int j, int pathIndex);
+
+int calculateDistanceCycle(const TSPData& data, const std::vector<int>& cycle);

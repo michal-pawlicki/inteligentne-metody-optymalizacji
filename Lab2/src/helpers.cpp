@@ -146,3 +146,12 @@ TSPSolution doInsideMoveEdges(const TSPSolution& solution, int i, int j, int pat
     }
     return newSolution;
 }
+
+int calculateDistanceCycle(const TSPData& data, const std::vector<int>& path) {
+  int distance = 0;
+  for (int i = 0; i < path.size(); i++) {
+    distance += data.distances[path[i]][path[i + 1]];
+  }
+  distance += data.distances[path.back()][path[0]];
+  return distance;
+}

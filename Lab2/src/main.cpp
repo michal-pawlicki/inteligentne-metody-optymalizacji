@@ -28,10 +28,11 @@ int main(int argc, char* argv[]) {
 
     std::string filename = "../data/lab1/" + dataSet + "100";
 
-    
     TSPData data = readTSPData(filename);
 
     TSPSolution solution = readTSPSolution("../data/lab2/" + dataSet + "/" + startingAlgorithm + "/solution_" + std::to_string(startingNode) + ".txt");
+
+    solution.distance = calculateDistanceCycle(data, solution.pathA) + calculateDistanceCycle(data, solution.pathB);
 
     TSPSolution newSolution;
 
