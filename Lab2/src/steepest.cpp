@@ -11,11 +11,10 @@ TSPSolution steepestVertices(const TSPData& data, TSPSolution startingSolution) 
     int deltaOutside = calculateDeltaOutside(data, startingSolution, bestOutsideMove.first, bestOutsideMove.second);
     int deltaInside = calculateDeltaInsideVertices(data, startingSolution, bestInsideMove.second.first, bestInsideMove.second.second, bestInsideMove.first);
 
-
-    if (deltaOutside <= deltaInside && deltaOutside < 0) {
+    if ((deltaOutside <= deltaInside) && (deltaOutside < 0)) {
       startingSolution = doOutsideMove(startingSolution, bestOutsideMove.first, bestOutsideMove.second);
       startingSolution.distance += deltaOutside;
-    } else if (deltaInside < deltaOutside && deltaInside < 0) {
+    } else if ((deltaInside < deltaOutside) && (deltaInside < 0)) {
       startingSolution = doInsideMoveVertices(startingSolution, bestInsideMove.second.first, bestInsideMove.second.second, bestInsideMove.first);
       startingSolution.distance += deltaInside;
     }
@@ -34,10 +33,11 @@ TSPSolution steepestEdges(const TSPData& data, TSPSolution startingSolution) {
     int deltaOutside = calculateDeltaOutside(data, startingSolution, bestOutsideMove.first, bestOutsideMove.second);
     int deltaInside = calculateDeltaInsideEdges(data, startingSolution, bestInsideMove.second.first, bestInsideMove.second.second, bestInsideMove.first);
 
-    if (deltaOutside <= deltaInside && deltaOutside < 0) {
+
+    if ((deltaOutside <= deltaInside) && (deltaOutside < 0)) {
       startingSolution = doOutsideMove(startingSolution, bestOutsideMove.first, bestOutsideMove.second);
       startingSolution.distance += deltaOutside;
-    } else if (deltaInside < deltaOutside && deltaInside < 0) {
+    } else if ((deltaInside < deltaOutside) && (deltaInside < 0)) {
       startingSolution = doInsideMoveEdges(startingSolution, bestInsideMove.second.first, bestInsideMove.second.second, bestInsideMove.first);
       startingSolution.distance += deltaInside;
     }

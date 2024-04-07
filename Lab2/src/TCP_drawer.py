@@ -1,6 +1,7 @@
 import sys
-
+import math
 import matplotlib.pyplot as plt
+
 
 
 def read_instance(filename):
@@ -38,6 +39,13 @@ def plot_solution(pathA, pathB, name):
 
     plt.show()
 
+
+def calculate_distance(point1, point2):
+    return math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
+
+def calculate_path_length(path):
+    return sum(calculate_distance(path[i], path[i+1]) for i in range(len(path) - 1))
+
 def main():
   if len(sys.argv) != 3:
     print("Usage: python TCP_drawer.py <solution_file> <instance_file>")
@@ -47,6 +55,10 @@ def main():
   instance_filename = sys.argv[2]
 
   pathA, pathB, distance = read_solution(solution_filename, instance_filename)
+  pathA_length = calculate_path_length(pathA)
+  pathB_length = calculate_path_length(pathB)
+  print(f'Path A length: {pathA_length}')
+  print(f'Path B length: {pathB_length}')
   plot_solution(pathA, pathB, 'Distance: ' + distance)
 
 if __name__ == '__main__':
