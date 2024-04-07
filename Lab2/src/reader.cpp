@@ -1,6 +1,7 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <cmath>
 #include "reader.hpp"
 
 

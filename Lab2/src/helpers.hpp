@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "defs.hpp"
 
 std::vector<std::pair<int, int> > outsideMoves(const TSPSolution& solution);

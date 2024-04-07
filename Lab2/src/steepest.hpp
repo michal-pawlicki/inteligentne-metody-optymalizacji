@@ -1,5 +1,6 @@
 #include "defs.hpp"
 #include "helpers.hpp"
+#include <cmath>
 
 TSPSolution steepestVertices(const TSPData& data, TSPSolution startingSolution);
 
