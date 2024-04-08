@@ -51,9 +51,9 @@ int main(int argc, char* argv[]) {
         }
     } else if (typeOfLocalSearch == "random_walk") {
         if (typeOfNeighbourhood == "vertices") {
-            newSolution = randomWalkVertices(data, solution, 1);
+            newSolution = randomWalkVertices(data, solution, 250);
         } else {
-            newSolution = randomWalkEdges(data, solution, 1);
+            newSolution = randomWalkEdges(data, solution, 250);
         }
     } else if (typeOfLocalSearch == "greedy") {
         if (typeOfNeighbourhood == "vertices") {

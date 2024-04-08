@@ -27,7 +27,7 @@ TSPSolution randomWalkVertices(const TSPData& data, TSPSolution startingSolution
       bestSolution = currentSolution;
     }
     auto currentTime = std::chrono::high_resolution_clock::now();
-    auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
+    auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
     if (elapsedTime >= timeLimit) {
       break;
     }
@@ -62,7 +62,7 @@ TSPSolution randomWalkEdges(const TSPData& data, TSPSolution startingSolution, i
       bestSolution = currentSolution;
     }
     auto currentTime = std::chrono::high_resolution_clock::now();
-    auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
+    auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
     if (elapsedTime >= timeLimit) {
       break;
     }

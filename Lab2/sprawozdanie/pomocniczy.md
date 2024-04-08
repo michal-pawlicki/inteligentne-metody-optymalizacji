@@ -127,20 +127,69 @@ Maksymalny czas obliczeń: 154.0
 Średni czas obliczeń: 107.38
 
 kroB cycle  edges random_walk
+Wartość minimalna: 27841 (plik: .\out_51.txt )
+Wartość maksymalna: 148933
+Średnia wartość: 31089.52
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 250.0
+Średni czas obliczeń: 250.0
+
 
 kroB cycle  vertices random_walk
+Wartość minimalna: 27841 (plik: .\out_51.txt )
+Wartość maksymalna: 145094
+Średnia wartość: 31051.13
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 250.0
+Średni czas obliczeń: 250.0
 
 kroB random edges random_walk
+Wartość minimalna: 136176 (plik: .\out_7.txt )
+Wartość maksymalna: 156149
+Średnia wartość: 147537.71
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 250.0
+Średni czas obliczeń: 250.0
 
 kroB random vertices random_walk
+Wartość minimalna: 137110 (plik: .\out_37.txt )
+Wartość maksymalna: 154785
+Średnia wartość: 147399.68
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 250.0
+Średni czas obliczeń: 250.0
 
 kroA cycle  edges random_walk
+Wartość minimalna: 26698 (plik: .\out_22.txt )
+Wartość maksymalna: 32670
+Średnia wartość: 30544.05
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 250.0
+Średni czas obliczeń: 250.0
 
 kroA cycle  vertices random_walk
+Wartość minimalna: 26698 (plik: .\out_22.txt )
+Wartość maksymalna: 32670
+Średnia wartość: 30544.05
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 250.0
+Średni czas obliczeń: 250.0
 
 kroA random edges random_walk
+Wartość minimalna: 141729 (plik: .\out_37.txt )
+Wartość maksymalna: 158735
+Średnia wartość: 149599.17
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 250.0
+Średni czas obliczeń: 250.0
 
 kroA random vertices random_walk
+Wartość minimalna: 140156 (plik: .\out_0.txt )
+Wartość maksymalna: 157975
+Średnia wartość: 149056.81
+Minimalny czas obliczeń: 250.0
+Maksymalny czas obliczeń: 252.0
+Średni czas obliczeń: 250.0
 
 
 
