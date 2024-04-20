@@ -25,3 +25,5 @@ TSPSolution generateRandomSolution(const TSPData& data);
 
 void printSolutionCycle(const TSPSolution& solution);
 
+int findCityIndex(std::vector<int> path, int city);
+

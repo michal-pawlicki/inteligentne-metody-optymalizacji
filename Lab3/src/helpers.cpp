@@ -14,8 +14,10 @@ std::vector<std::pair<int, int> > outsideMoves(const TSPSolution& solution) {
 std::vector<std::pair<int, int> > insideMoves(const std::vector<int> path) {
     std::vector<std::pair<int, int> > moves;
     for (int i = 0; i < path.size(); i++) {
-      for (int j = i + 1; j < path.size(); j++) {
-        moves.push_back(std::make_pair(i, j));
+      for (int j = 0; j < path.size(); j++) {
+        if (i != j) {
+          moves.push_back(std::make_pair(i, j));
+        }
       }
     }
     return moves;
@@ -92,6 +94,10 @@ int calculateDeltaInsideEdges(const TSPData& data, const TSPSolution& solution, 
 
     int a1, a2, b1, b2;
 
+    if ( j < i) {
+      std::swap(i, j);
+    }
+
     if ( i == 0 & j == path.size() - 1) {
       a1 = path[i];
       a2 = path[(i + 1) % path.size()];
@@ -132,6 +138,9 @@ TSPSolution doInsideMoveVertices(const TSPSolution& solution, int i, int j, int 
 
 TSPSolution doInsideMoveEdges(const TSPSolution& solution, int i, int j, int pathIndex) {
     TSPSolution newSolution = solution;
+    if ( j < i) {
+      std::swap(i, j);
+    }
     if (pathIndex == 0) {
       if(i == 0 && j == newSolution.pathA.size() - 1) {
         std::swap(newSolution.pathA[i], newSolution.pathA[j]);
@@ -189,4 +198,9 @@ void printSolutionCycle(const TSPSolution& solution) {
     std::cout << node << " ";
   }
   std::cout << std::endl;
+}
+
+int findCityIndex(std::vector<int> path, int city) {
+  auto it = std::find(path.begin(), path.end(), city);
+  return std::distance(path.begin(), it);
 }

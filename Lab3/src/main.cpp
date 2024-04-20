@@ -1,8 +1,11 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
+#include <filesystem>
 #include "reader.hpp"
 #include "cycle_augmentation.hpp"
 #include "steepest.hpp"
+#include "candidate_moves.hpp"
 
 int main(int argc, char* argv[]) {
 
@@ -20,18 +23,31 @@ int main(int argc, char* argv[]) {
     TSPData data = readTSPData(filename);
     TSPSolution solution;
 
+    auto start = std::chrono::high_resolution_clock::now();
+
     if(algorithm == "cycle") {
         solution = cycleAugmentation(data, startNode);
     } else if(algorithm == "steepest") {
         TSPSolution randomSolution = generateRandomSolution(data);
         solution = steepestEdges(data, randomSolution);
-    } else {
+    } else if(algorithm == "candidates") {
+        TSPSolution randomSolution = generateRandomSolution(data);
+        solution = candidatesEdges(data, randomSolution, 20);
+    }
+    else {
         std::cerr << "Invalid algorithm" << std::endl;
         return 1;
     }
 
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-    std::ofstream outFile2("test_" + std::to_string(startNode) + ".txt");
+    std::cout << "Elapsed time: " << elapsed.count() << " miliseconds" << std::endl;
+
+    std::string dirPath = dataSet + "/" + algorithm;
+    system(("mkdir -p " + dirPath).c_str());
+
+    std::ofstream outFile2(dataSet + "/" + algorithm + "/" + std::to_string(startNode) + ".txt");
 
     outFile2 << solution.distance << std::endl;
 
@@ -45,6 +61,8 @@ int main(int argc, char* argv[]) {
         outFile2 << solution.pathB[i] << " "; 
     }
     outFile2 << std::endl;
+
+    outFile2 << elapsed.count() << std::endl;
 
     outFile2.close();
 
