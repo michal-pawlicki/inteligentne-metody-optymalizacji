@@ -27,3 +27,14 @@ void printSolutionCycle(const TSPSolution& solution);
 
 int findCityIndex(std::vector<int> path, int city);
 
+Move createMove(int i, int j, int k, int l, moveType type, int delta);
+
+int calculateDeltaInsideEdgesCache(const TSPData& data, const TSPSolution& solution, int i, int j, int k, int l, int pathIndex);
+
+std::pair<int, int> edgeExistsAnywhere(const TSPSolution& solution, int i, int j);
+
+int edgeExists(const TSPSolution& solution, int i, int j, int pathIndex);
+
+int calculateDeltaOutsideCache(const TSPData& data, const TSPSolution& solution, int i, int firstPathIndex, int j, int secondPathIndex);
+
+TSPSolution doInsideMoveEdgesCache(const TSPSolution& solution, int i, int j, int pathIndex);

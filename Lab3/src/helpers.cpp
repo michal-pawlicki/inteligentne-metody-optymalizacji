@@ -47,6 +47,39 @@ int calculateDeltaOutside(const TSPData& data, const TSPSolution& solution, int 
     return delta;
 }
 
+
+int calculateDeltaOutsideCache(const TSPData& data, const TSPSolution& solution, int i, int j) {
+    std::vector<int> firstPath = solution.pathA;
+    std::vector<int> secondPath = solution.pathB;
+    int x1, x2, y1, y2, z1, z2;
+
+    x1 = firstPath[(i - 1 + firstPath.size()) % firstPath.size()];
+    y1 = firstPath[i];
+    z1 = firstPath[(i + 1) % firstPath.size()];
+
+    x2 = secondPath[(j - 1 + secondPath.size()) % secondPath.size()];
+    y2 = secondPath[j];
+    z2 = secondPath[(j + 1) % secondPath.size()];
+
+    int delta = 0;
+    delta -= data.distances[x1][y1];
+    delta -= data.distances[y1][z1];
+    delta -= data.distances[x2][y2];
+    delta -= data.distances[y2][z2];
+
+    delta += data.distances[x1][y2];
+    delta += data.distances[y2][z1];
+    delta += data.distances[x2][y1];
+    delta += data.distances[y1][z2];
+
+    Move move = createMove(x1, y1, x2, y2, outside, delta);
+    move.m = z1;
+    move.n = z2;
+
+
+    return delta;
+}
+
 int calculateDeltaInsideVertices(const TSPData& data, const TSPSolution& solution, int i, int j, int pathIndex) {
     int delta = 0;
     std::vector<int> path = pathIndex == 0 ? solution.pathA : solution.pathB;
@@ -117,6 +150,25 @@ int calculateDeltaInsideEdges(const TSPData& data, const TSPSolution& solution, 
   
     return delta;
 }
+
+
+int calculateDeltaInsideEdgesCache(const TSPData& data, const TSPSolution& solution, int i, int j, int k, int l, int pathIndex) {
+    int delta = 0;
+    std::vector<int> path = pathIndex == 0 ? solution.pathA : solution.pathB;
+    int a1, a2, b1, b2;
+    a1 = path[i];
+    a2 = path[j];
+    b1 = path[k];
+    b2 = path[l];
+
+
+    delta += data.distances[a1][b1];
+    delta += data.distances[a2][b2];
+    delta -= data.distances[a1][a2];
+    delta -= data.distances[b1][b2];
+  
+    return delta;
+}
     
 
 
@@ -152,6 +204,27 @@ TSPSolution doInsideMoveEdges(const TSPSolution& solution, int i, int j, int pat
         std::swap(newSolution.pathB[i], newSolution.pathB[j]);
       } else {
         std::reverse(newSolution.pathB.begin() + i, newSolution.pathB.begin() + j + 1);
+      }
+    }
+    return newSolution;
+}
+
+TSPSolution doInsideMoveEdgesCache(const TSPSolution& solution, int i, int j, int pathIndex) {
+    TSPSolution newSolution = solution;
+    if ( j < i) {
+      std::swap(i, j);
+    }
+    if (pathIndex == 0) {
+      if(i == 0 && j == newSolution.pathA.size() - 1) {
+        std::swap(newSolution.pathA[i], newSolution.pathA[j]);
+      } else {
+        std::reverse(newSolution.pathA.begin() + i + 1, newSolution.pathA.begin() + j + 1);
+      }
+    } else {
+      if(i == 0 && j == newSolution.pathB.size() - 1) {
+        std::swap(newSolution.pathB[i], newSolution.pathB[j]);
+      } else {
+        std::reverse(newSolution.pathB.begin() + i+ 1, newSolution.pathB.begin() + j+ 1);
       }
     }
     return newSolution;
@@ -203,4 +276,51 @@ void printSolutionCycle(const TSPSolution& solution) {
 int findCityIndex(std::vector<int> path, int city) {
   auto it = std::find(path.begin(), path.end(), city);
   return std::distance(path.begin(), it);
+}
+
+Move createMove(int i, int j, int k, int l, moveType type, int delta) {
+  Move move;
+  move.i = i;
+  move.j = j;
+  move.k = k;
+  move.l = l;
+  move.type = type;
+  move.delta = delta;
+
+  return move;
+}
+
+int edgeExists(const TSPSolution& solution, int i, int j, int pathIndex) { //zwraca 0 gdy nie istnieje, 1 gdy istnieje w podanej kolejności, -1 gdy istnieje w odwrotnej
+  std::vector<int> path = pathIndex == 0 ? solution.pathA : solution.pathB;
+  for(int k = 0; k < path.size() - 1; k++) {
+    int x = path[k];
+    int y = path[k + 1];
+    if (x == i && y == j) {
+      return 1;
+    }
+    if (x == j && y == i) {
+      return -1;
+    }
+  }
+  int x = path.back();
+  int y = path[0];
+  if (x == i && y == j) {
+    return 1;
+  }
+  if (x == j && y == i) {
+    return -1;
+  }
+  return 0; 
+}
+
+std::pair<int, int> edgeExistsAnywhere(const TSPSolution& solution, int i, int j) { //zwraca parę indeks ścieżki i czy istnieje
+  int existsA = edgeExists(solution, i, j, 0);
+  if (existsA != 0) {
+    return std::make_pair(0, existsA);
+  }
+  int existsB = edgeExists(solution, i, j, 1);
+  if (existsB != 0) {
+    return std::make_pair(1, existsB);
+  }
+  return std::make_pair(-1, 0);
 }

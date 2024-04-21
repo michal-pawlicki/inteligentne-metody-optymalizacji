@@ -6,6 +6,7 @@
 #include "cycle_augmentation.hpp"
 #include "steepest.hpp"
 #include "candidate_moves.hpp"
+#include "cache_moves.hpp"
 
 int main(int argc, char* argv[]) {
 
@@ -33,6 +34,9 @@ int main(int argc, char* argv[]) {
     } else if(algorithm == "candidates") {
         TSPSolution randomSolution = generateRandomSolution(data);
         solution = candidatesEdges(data, randomSolution, 20);
+    } else if(algorithm == "cache") {
+        TSPSolution randomSolution = generateRandomSolution(data);
+        solution = cacheEdges(data, randomSolution);
     }
     else {
         std::cerr << "Invalid algorithm" << std::endl;
