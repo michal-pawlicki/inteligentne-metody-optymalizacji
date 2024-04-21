@@ -1,7 +1,7 @@
 ### Compile using
 
 ```bash
-g++ -o out/main src/main.cpp src/reader.cpp src/cycle_augmentation.cpp
+++ -o out/main src/main.cpp src/reader.cpp src/cycle_augmentation.cpp src/helpers.cpp src/steepest.cpp src/candidate_moves.cpp src/cache_moves.cpp
 ```
 
 ### Run using
