@@ -8,6 +8,46 @@ Celem zadania jest usprawnienie efektywności algorytmów lokalnego przeszukiwan
 
 ## Opis algorytmów i funkcji pomocniczych
 
+### Przeszukiwanie z wykorzystaniem ocen ruchów z poprzednich iteracji
+
+```
+Wczytaj rozwiązanie początkowe
+Zainicjuj listę ruchów
+Dodaj do listy ruchów wszystkie możliwe ruchy z sąsiedztwa, których obliczona delta jest mniejsza od 0
+Powtarzaj:
+  Dla każdego ruchu na liście:
+    Jeśli jest to zamiana krawędzi:
+      Jeśli krawędzie nie występują w żadnej ścieżce:
+        Usuń ruch z listy
+      Jeśli krawędzie występują w ścieżce i mają ten sam kierunek:
+        Zapisz ruch jako najlepszy
+        Usuń ruch z listy
+        Przerwij
+    Jeśli jest to zmiana wierzchołków:
+      Jeśli wierzchołki są w tej samej ścieżce:
+        Usuń ruch z listy
+      Jeśli w ścieżce istnieją dla obu wierzchołków krawędzie postaci poprzednik - wierzchołek i wierzchołek - następnik:
+        Zapisz ruch jako najlepszy
+        Usuń ruch z listy
+        Przerwij
+      W przeciwnym wypadku:
+        Usuń ruch z listy
+  Jeśli znaleziono aplikowalny najlepszy ruch:
+    Zainicjuj pustą listę nowych ruchów
+    Jeśli najlepszy ruch to wymiana krawędzi:
+      Dla obu nowych krawędzi i dla każdej innej krawędzi w tej ścieżce:
+        Utwórz nowy ruch jako zamianę tych krawędzi
+        Jeśli delta dla ruchu jest mniejsza od zera dodaj ruch i ruch w przeciwnym kierunku do listy nowych ruchów
+    Jeśli najlepszy ruch to wymiana wierzchołków:
+      Dla obu wierzchołków i dla każdego wierzchołka na ścieżce, z której pochodzi wierzchołek:
+      Utwórz nowy ruch jako wymiana tych wierzchołków
+      Jeśli delta dla ruchu jest mniejsza od zera dodaj ruch do listy nowych ruchów
+    Połącz listę nowych ruchów z listą ruchów
+    Usuń duplikaty i posortuj po wartości delty
+  W przeciwnym wypadku:
+    Zakończ przeszukiwanie
+```
+
 ### Wygeneruj krawędzie kandydackie
 
 ```
