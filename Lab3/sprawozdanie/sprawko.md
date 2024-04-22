@@ -85,6 +85,7 @@ Powtarzaj dopóki delta najlepszego ruchu mniejsza od 0:
 | ----------------------- | ------------------------ | ----------------------- |
 | Cycle Augmentation      | 39502.51 (36621 - 42312) | 1252.79 (1228 - 1396)   |
 | Local Search - Steepest | 42095.21 (38155 - 46176) | 10706.41 (9198 - 12083) |
+| Cache Local Search      | 47239.43 (43198 - 53129) | 8037.21 (7248 - 8973)   |  
 | Candidate Moves (k=20)  | 43488.3 (39551 - 49012)  | 7231.28 (6362 - 8039)   |
 
 ### Cycle Augmentation
@@ -94,6 +95,10 @@ Powtarzaj dopóki delta najlepszego ruchu mniejsza od 0:
 ### Local Search - Steepest
 
 ![kroA Local Search - Steepest](kroA_steepest.png "Local Search - Steepest")
+
+### Cache Local Search
+
+![kroA Cache Moves](kroA_cache.png "Cache Moves")
 
 ### Candidate Moves
 
@@ -105,6 +110,7 @@ Powtarzaj dopóki delta najlepszego ruchu mniejsza od 0:
 | ----------------------- | ------------------------ | ---------------------- |
 | Cycle Augmentation      | 38928.69 (34997 - 43293) | 1293.11 (1229 - 1502)  |
 | Local Search - Steepest | 41760.15 (38626 - 46975) | 9992.07 (9198 - 11196) |
+| Cache Local Search      | 47427.83 (43338 - 53185) | 7935.89 (7051 - 8824)  | 
 | Candidate Moves (k=20)  | 43851.04 (39220 - 50323) | 7299.45 (6362 - 8039)  |
 
 ### Cycle Augmentation
@@ -115,11 +121,16 @@ Powtarzaj dopóki delta najlepszego ruchu mniejsza od 0:
 
 ![kroB Local Search - Steepest](kroB_steepest.png "Local Search - Steepest")
 
+### Cache Local Search
+
+![kroB Cache Moves](kroB_cache.png "Cache Moves")
+
 ### Candidate Moves
 
 ![kroB Candidate Moves](kroB_candidate.png "Candidate Moves")
 
 ## Wnioski
+Zarówno algorytm lokalnego przeszukiwania oparty o ruchy kandydackie jak i o wykorzystywanie ruchów z poprzednich iteracji, przyniosły poprawę czasową wykonania przeszukiwania w porównaniu do tradycyjnej wersji stromej. Przy czym najszybszy okazał się algorytm oparty o ruchy kandydackie. Jeżeli chodzi o funkcję celu to algorytm ruchów kandydackich jest gorszy od tradycyjnego przeszukiwania stromego, ale lepszy od algorytmu z listą ruchów, który wypadł najgorzej w tym zestawieniu. Wszystkie 3 algorytmy dają gorsze wyniki zarówno czasowe jak i pod względem funkcji celu, od algorytmu konstrukcyjnego, ale może być to spowodowane rozpoczynaniem od rozwiązań losowych, a lokalne przeszukiwanie nie jest w stanie oddzielić cykli przestrzenie od siebie, co dobrze widać na wizualizacjach.
 
 ## Kod programu
 
