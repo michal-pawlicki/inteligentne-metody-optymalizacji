@@ -38,10 +38,16 @@ Powtarzaj:
       Dla obu nowych krawędzi i dla każdej innej krawędzi w tej ścieżce:
         Utwórz nowy ruch jako zamianę tych krawędzi
         Jeśli delta dla ruchu jest mniejsza od zera dodaj ruch i ruch w przeciwnym kierunku do listy nowych ruchów
+      Dla wierzchołków w nowych krawędziach i dla wszystkich wierzchołków w drugiej ścieżce:
+        Utwórz nowy ruch jako zamianę tych wierzchołków
+        Jeśli delta dla ruchu jest mniejsza od zera dodaj ruch do listy
     Jeśli najlepszy ruch to wymiana wierzchołków:
       Dla obu wierzchołków i dla każdego wierzchołka na ścieżce, z której pochodzi wierzchołek:
-      Utwórz nowy ruch jako wymiana tych wierzchołków
-      Jeśli delta dla ruchu jest mniejsza od zera dodaj ruch do listy nowych ruchów
+        Utwórz nowy ruch jako wymiana tych wierzchołków
+        Jeśli delta dla ruchu jest mniejsza od zera dodaj ruch do listy nowych ruchów
+      Dla krawędzi zawierających wymieniane wierzchołki i dla wszystkich krawędzi w odpowiednich ścieżkach:
+        Utwórz nowy ruch jako zamianę tych krawędzi
+        Jeśli delta dla ruchu jest mniejsza od zera dodaj ruch i ruch w przeciwnym kierunku do listy nowych ruchów
     Połącz listę nowych ruchów z listą ruchów
     Usuń duplikaty i posortuj po wartości delty
   W przeciwnym wypadku:
