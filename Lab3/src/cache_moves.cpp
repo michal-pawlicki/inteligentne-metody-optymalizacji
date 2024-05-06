@@ -148,7 +148,7 @@ std::vector<Move> generateNewMoves(const TSPData& data, const TSPSolution& solut
       // std::cout<<"------------"<<std::endl;
       // std::cout<< move.i<<" "<<move.j<<" "<<move.k<<" "<<move.l<<std::endl;
       // std::cout<< i<<" "<<j<<" "<<k<<" "<<l<<std::endl;
-      for(int d = 1; d < path.size() - 2; d++) {
+      for(int d = 1; d < path.size() - 1; d++) {
         int firstIndex = (i + d) % path.size();
         int secondIndex = (i + d + 1) % path.size();
         int thirdIndex = (j + d) % path.size();
@@ -313,7 +313,7 @@ std::vector<Move> generateNewMoves(const TSPData& data, const TSPSolution& solut
         }
       }
 
-      for(int d = 1; d < solution.pathA.size() - 2; d++) {
+      for(int d = 1; d < solution.pathA.size() - 1; d++) {
         int firstIndex = (indexA + d) % solution.pathA.size();
         int secondIndex = (indexA + d + 1) % solution.pathA.size();
         int thirdIndex = (indexB + d) % solution.pathA.size();
