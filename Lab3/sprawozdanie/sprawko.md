@@ -12,7 +12,7 @@ Celem zadania jest usprawnienie efektywności algorytmów lokalnego przeszukiwan
 
 ```
 Wczytaj rozwiązanie początkowe
-Zainicjuj listę ruchów
+Zainicjuj listę ruchów i posortuj ją po wartościach delty
 Dodaj do listy ruchów wszystkie możliwe ruchy z sąsiedztwa, których obliczona delta jest mniejsza od 0
 Powtarzaj:
   Dla każdego ruchu na liście:
