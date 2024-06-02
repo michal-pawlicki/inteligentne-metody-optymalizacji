@@ -4,6 +4,7 @@ TSPSolution iteratedLocalSearch(const TSPData& data, int stopTime) {
     int startTime = time(nullptr);
     TSPSolution bestSolution = steepestEdges(data, generateRandomSolution(data));
     TSPSolution currentSolution = bestSolution;
+    int numberOfIterations = 0;
     while (time(nullptr) - startTime < stopTime) {
         TSPSolution perturbedSolution = perturb(data, currentSolution);
         TSPSolution localOptimum = steepestEdges(data, perturbedSolution);
@@ -13,7 +14,9 @@ TSPSolution iteratedLocalSearch(const TSPData& data, int stopTime) {
                 bestSolution = currentSolution;
             }
         }
+        numberOfIterations++;
     }
+    bestSolution.numberOfIterations = numberOfIterations;
     return bestSolution;
 }
 

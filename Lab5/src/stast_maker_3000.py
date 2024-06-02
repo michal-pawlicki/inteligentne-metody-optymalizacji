@@ -14,8 +14,7 @@ def main():
 
   for folder in os.listdir(out_dir):
       folder_path = os.path.join(out_dir, folder)
-      if folder_path.endswith('msls'):
-        continue
+
       if os.path.isdir(folder_path):
           values = []
           times = []

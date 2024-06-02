@@ -3,21 +3,19 @@
 #include <chrono>
 #include <filesystem>
 #include "reader.hpp"
-#include "iterated_local_search.hpp"
-#include "multiple_start_local_search.hpp"
-#include "large_scale_neighbourhood_search.hpp"
 #include "steepest.hpp"
+#include "hybrid_evolution.hpp"
 
 int main(int argc, char* argv[]) {
 
     if (argc != 4) {
-        std::cerr << "Usage: " << argv[0] << " <startingNode> <dataSet> <algorithm>" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <startingNode> <dataSet> <doLocalSearch>" << std::endl;
         return 1;
     }
     
     int startNode = atoi(argv[1]);
     std::string dataSet = argv[2];
-    std::string algorithm = argv[3];
+    std::string doLocalSearch = argv[3];
 
     std::string filename = "../data/" + dataSet + "200";
 
@@ -26,26 +24,23 @@ int main(int argc, char* argv[]) {
 
     auto start = std::chrono::high_resolution_clock::now();
 
-    if(algorithm == "msls") {
-        solution = multipleStartLocalSearch(data, 100);
-    } else if(algorithm == "ils1") {
-        solution = iteratedLocalSearch(data, 1000);
-    } else if(algorithm == "ils2-1") {
-        solution = largeScaleNeighbourhoodSearch(data, false, 1000);
-    } else if(algorithm == "ils2-2") {
-        solution = largeScaleNeighbourhoodSearch(data, true, 1000);
-    } else if(algorithm == "steepest") {
-        solution = steepestEdges(data, generateRandomSolution(data));
+    std::string algorithm;
+
+    if (doLocalSearch == "0") {
+        solution = hybridEvolution(data, 20, false, 1000);
+        algorithm = "noLocalSearch";
+    } else {
+        solution = hybridEvolution(data, 20, true, 1000);
+        algorithm = "withLocalSearch";
     }
-    else {
-        std::cerr << "Invalid algorithm" << std::endl;
-        return 1;
-    }
+
 
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
     std::cout << "Elapsed time: " << elapsed.count() << " miliseconds" << std::endl;
+
+    
 
     std::string dirPath = dataSet + "/" + algorithm;
     system(("mkdir -p " + dirPath).c_str());

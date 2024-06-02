@@ -4,6 +4,7 @@ TSPSolution largeScaleNeighbourhoodSearch(const TSPData& data, bool doLocalSearc
     TSPSolution bestSolution = steepestEdges(data, generateRandomSolution(data));
     TSPSolution currentSolution = bestSolution;
     int startTime = time(nullptr);
+    int numberOfIterations = 0;
     while (time(nullptr) - startTime < stopTime) {
         TSPSolution destroyedSolution = destroy(currentSolution);
         TSPSolution repairedSolution = repair(data, destroyedSolution);
@@ -16,7 +17,9 @@ TSPSolution largeScaleNeighbourhoodSearch(const TSPData& data, bool doLocalSearc
                 bestSolution = currentSolution;
             }
         }
+        numberOfIterations++;
     }
+    bestSolution.numberOfIterations = numberOfIterations;
     return bestSolution;
 }
 
