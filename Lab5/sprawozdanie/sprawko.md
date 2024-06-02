@@ -47,6 +47,14 @@ Stwórz rozwiązanie poprzez uruchomienie algorytmyrozbudowy cyklu na pozoostał
 | Hybrydowy algorytm ewolucyjny bez lokalnego przeszukiwania                 | 34263.75 (32887 - 35723) | ---                        | 590004.8 (389611 - 703333) |
 | Hybrydowy algorytm ewolucyjny z lokalnym przesukiwaniem                    | 34114 (33158 - 35489)    | ---                        | 17571.25 (14033 - 20057)   |
 
+### Wersja bez lokalnego przeszukiwania
+
+![kroA noLocal](kroA_noLocal.png "krA noLocal")
+
+### Wersja z lokalnym przeszukiwaniem
+
+![kroA Local](kroA_withLocal.png "krA Local")
+
 ### KroB
 
 | Konfiguracja                                                               | Wartość funkcji celu    | Czas (ms)                   | Liczba iteracji            |
@@ -55,8 +63,20 @@ Stwórz rozwiązanie poprzez uruchomienie algorytmyrozbudowy cyklu na pozoostał
 | ILS - Mała perturbacja                                                     | 38053.7 (35657 - 41156) | ---                         | 11435.2 (11363 - 11473)    |
 | ILS - Repair-Destroy wersja bez lokalnego przeszykiwania w każdej iteracji | 31642.8 (30973 - 32789) | ---                         | 2650.8 (2641 - 2658)       |
 | ILS - Repair-Destroy wersja z lokalnym przeszykiwaniem w każdej iteracji   | 31166.2 (30645 - 31445) | ---                         | 1344.8 (1287 - 1412)       |
-| Hybrydowy algorytm ewolucyjny bez lokalnego przeszukiwania                 | 35546.5 (33534 - 36546) | ---                         | 314795.5 (165666 - 462877) |
+| Hybrydowy algorytm ewolucyjny bez lokalnego przeszukiwania                 | 35546.5 (33019 - 36546) | ---                         | 314795.5 (165666 - 462877) |
 | Hybrydowy algorytm ewolucyjny z lokalnym przesukiwaniem                    | 34215 (33258 - 34978)   | ---                         | 18449 (16613 - 19294)      |
+
+### Wersja bez lokalnego przeszukiwania
+
+![kroB noLocal](kroB_noLocal.png "krB noLocal")
+
+### Wersja z lokalnym przeszukiwaniem
+
+![kroB Local](kroB_withLocal.png "krB Local")
+
+## Wnioski
+
+Hybrydowy algorytm ewolucyjny z lokalnym przeszukiwaniem osiągał podoobne wyniki do wersji bez lokalnego przeszukiwania jednak wykonwał znacząco mniej iteracji. Wartści funkcji celu jakie otrzymywał były zauważalnie gorsze od wyników uzyskanych przez najlepsze algorytmy z poprzednich laboratoriów, jednak liczba iteracji jakie wykonywał była większa.
 
 # Laboratorium 6 - Testy globelnej wypukłości
 
