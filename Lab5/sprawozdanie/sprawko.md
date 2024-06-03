@@ -46,6 +46,7 @@ Stwórz rozwiązanie poprzez uruchomienie algorytmyrozbudowy cyklu na pozoostał
 | ILS - Repair-Destroy wersja z lokalnym przeszukiwaniem w każdej iteracji   | 31101.2 (30660 - 31612)  | ---                        | 1254.3 (1210 - 1313)       |
 | Hybrydowy algorytm ewolucyjny bez lokalnego przeszukiwania                 | 34263.75 (32887 - 35723) | ---                        | 590004.8 (389611 - 703333) |
 | Hybrydowy algorytm ewolucyjny z lokalnym przesukiwaniem                    | 34114 (33158 - 35489)    | ---                        | 17571.25 (14033 - 20057)   |
+| Algorytm rozbudoowy cyklu                                                  | 39502.51 (35437 - 42312) | 1263.47 (1247 - 1391)      | ----                       |
 
 ### Wersja bez lokalnego przeszukiwania
 
@@ -55,16 +56,21 @@ Stwórz rozwiązanie poprzez uruchomienie algorytmyrozbudowy cyklu na pozoostał
 
 ![kroA Local](kroA_withLocal.png "krA Local")
 
+### Algorytm rozbudowy cyklu
+
+![kroA cycle](kroA_cycle.png "krA cycle")
+
 ### KroB
 
-| Konfiguracja                                                               | Wartość funkcji celu    | Czas (ms)                   | Liczba iteracji            |
-| -------------------------------------------------------------------------- | ----------------------- | --------------------------- | -------------------------- |
-| MSLS                                                                       | 38611.7 (37989 - 39124) | 995968.8 (985277 - 1000642) | 1000                       |
-| ILS - Mała perturbacja                                                     | 38053.7 (35657 - 41156) | ---                         | 11435.2 (11363 - 11473)    |
-| ILS - Repair-Destroy wersja bez lokalnego przeszykiwania w każdej iteracji | 31642.8 (30973 - 32789) | ---                         | 2650.8 (2641 - 2658)       |
-| ILS - Repair-Destroy wersja z lokalnym przeszykiwaniem w każdej iteracji   | 31166.2 (30645 - 31445) | ---                         | 1344.8 (1287 - 1412)       |
-| Hybrydowy algorytm ewolucyjny bez lokalnego przeszukiwania                 | 35546.5 (33019 - 36546) | ---                         | 314795.5 (165666 - 462877) |
-| Hybrydowy algorytm ewolucyjny z lokalnym przesukiwaniem                    | 34215 (33258 - 34978)   | ---                         | 18449 (16613 - 19294)      |
+| Konfiguracja                                                               | Wartość funkcji celu     | Czas (ms)                   | Liczba iteracji            |
+| -------------------------------------------------------------------------- | ------------------------ | --------------------------- | -------------------------- |
+| MSLS                                                                       | 38611.7 (37989 - 39124)  | 995968.8 (985277 - 1000642) | 1000                       |
+| ILS - Mała perturbacja                                                     | 38053.7 (35657 - 41156)  | ---                         | 11435.2 (11363 - 11473)    |
+| ILS - Repair-Destroy wersja bez lokalnego przeszykiwania w każdej iteracji | 31642.8 (30973 - 32789)  | ---                         | 2650.8 (2641 - 2658)       |
+| ILS - Repair-Destroy wersja z lokalnym przeszykiwaniem w każdej iteracji   | 31166.2 (30645 - 31445)  | ---                         | 1344.8 (1287 - 1412)       |
+| Hybrydowy algorytm ewolucyjny bez lokalnego przeszukiwania                 | 35546.5 (33019 - 36546)  | ---                         | 314795.5 (165666 - 462877) |
+| Hybrydowy algorytm ewolucyjny z lokalnym przesukiwaniem                    | 34215 (33258 - 34978)    | ---                         | 18449 (16613 - 19294)      |
+| Algorytm rozbudoowy cyklu                                                  | 38928.69 (33992 - 43293) | 1273.13 (1252 - 1436)       | ----                       |
 
 ### Wersja bez lokalnego przeszukiwania
 
@@ -73,6 +79,10 @@ Stwórz rozwiązanie poprzez uruchomienie algorytmyrozbudowy cyklu na pozoostał
 ### Wersja z lokalnym przeszukiwaniem
 
 ![kroB Local](kroB_withLocal.png "krB Local")
+
+### Algorytm rozbudowy cyklu
+
+![kroB cycle](kroB_cycle.png "krB cycle")
 
 ## Wnioski
 

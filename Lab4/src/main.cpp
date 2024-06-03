@@ -36,6 +36,8 @@ int main(int argc, char* argv[]) {
         solution = largeScaleNeighbourhoodSearch(data, true, 1000);
     } else if(algorithm == "steepest") {
         solution = steepestEdges(data, generateRandomSolution(data));
+    } else if(algorithm == "cycle") {
+        solution = cycleAugmentation(data, startNode);
     }
     else {
         std::cerr << "Invalid algorithm" << std::endl;
